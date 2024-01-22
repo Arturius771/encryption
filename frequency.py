@@ -13,13 +13,16 @@ def print_frequency(input_file):
 
       for letter, count in sorted_characters:
         if letter.isalpha():
-          percentage = (count / total_characters) * 180
+          percentage = (count / total_characters) * 100
           print(f"{letter}: {count} ({percentage:.2f}%)")
 
   except FileNotFoundError:
     print("EXCEPTION: File not found")
 
 
-# Run from terminal (eg. python frequency.py)
+# Run from terminal (eg. >python frequency.py)
 if __name__ == '__main__':
-  print_frequency('test.text')
+  print("What file do you want to analyse?")
+  filepath = input()
+
+  print_frequency(filepath)
