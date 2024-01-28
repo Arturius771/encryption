@@ -1,29 +1,22 @@
 import re
 
 def swap(message_content: str):
-    previous_message = message_content
-    character_dict = {}
-    delimiter = "\n==================================\n"
-    print(f"{delimiter}{previous_message}{delimiter}")
-    while(True):
+    character_dict = {}    
+    print_message(message_content)
+    while(True):            
+      # print_message(message_content, 'Original')
+      print(character_dict)
 
       [target_character, new_character] = prompt_user()
-
-      if target_character == new_character:
-        break
-
       character_dict[target_character] = new_character
-      
+      translation_table = str.maketrans(character_dict)      
+      translated = message_content.translate(translation_table)
 
-      for target, new in character_dict.items():
-        previous_message = message_content.replace(target, new)
-
-      translation_table = str.maketrans(character_dict)
-      print(f"Original:{delimiter}{message_content.translate(translation_table)}{delimiter}")
-      print(f"{previous_message}{delimiter}")
-      
-    translation_table = str.maketrans(character_dict)
-    print(f"{delimiter}{message_content.translate(translation_table)}{delimiter}")
+      print_message(translated, 'Translated')
+  
+def print_message(message, header = ''):
+  delimiter = "\n==================================\n"
+  print(f"\n{header}:\n{delimiter}{message}{delimiter}")
 
 def prompt_user() -> [str, str]:
   print("Swap character X=Y:")
