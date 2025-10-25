@@ -1,13 +1,13 @@
 import random
 import string
 
+# Used to create a randomly shuffled message.
+
 def substitution(message_content):
     characters = list(string.ascii_letters)
     shuffled = list(characters)
     random.shuffle(shuffled)
-
     substitution_dict = dict(zip(characters, shuffled))
-
     encrypted_message = ''.join(substitution_dict.get(char, char) for char in message_content)
     
     print(encrypted_message)

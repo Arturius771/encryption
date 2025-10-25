@@ -1,5 +1,7 @@
 import re
 
+# Used to decrypt.
+
 def swap(message_content: str):
     character_dict = {}    
     print_message(message_content)
